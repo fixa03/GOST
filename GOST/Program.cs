@@ -1,5 +1,6 @@
 ﻿using System;
 using Feistel_network;
+using NumberSystem;
 
 namespace GOST
 {
@@ -7,13 +8,15 @@ namespace GOST
     {
         static void Main(string[] args)
         {
+
             //длина текста кратна 4 
             //длина ключа = 16 символов
 
             gost obj = new gost("кмзи", "оченьхорошийключ");
             //string str2 = obj.Addition16("144E","4B7");
 
-            obj.step(0, 0);
+            //obj.encrypt();
+            obj.decrypt();
 
             string str = Console.ReadLine();
             str = str.ToLower();

@@ -5,11 +5,11 @@ namespace NumberSystem
 {
     class ConvertSystem
     {
-        static public string To16(int value, int len = 4)
+        static public string To16(long value, int len = 4)
         {
             string res = String.Empty;
 
-            List<int> array = new List<int>();
+            List<long> array = new List<long>();
 
             while (value > 0)
             {
@@ -55,10 +55,10 @@ namespace NumberSystem
             return res;
         }
 
-        static public int From16To10(string value)
+        static public long From16To10(string value)
         {
             List<int> array = new List<int>(value.Length);
-            int res = 0;
+            long res = 0;
 
             foreach (char c in value)
             {
@@ -93,17 +93,17 @@ namespace NumberSystem
 
             for (int i = 0; i < array.Count; i++)
             {
-                res += array[i] * Convert.ToInt16(Math.Pow(16, i));
+                res += array[i] * Convert.ToInt64(Math.Pow(16, i));
             }
 
             return res;
         }
 
 
-        static public int From2To10(string value)
+        static public long From2To10(string value)
         {
             List<int> array = new List<int>(value.Length);
-            int res = 0;
+            long res = 0;
 
             foreach (char c in value)
             {
@@ -114,18 +114,18 @@ namespace NumberSystem
 
             for (int i = 0; i < array.Count; i++)
             {
-                res += array[i] * Convert.ToInt16(Math.Pow(2, i));
+                res += array[i] * Convert.ToInt64(Math.Pow(2, i));
             }
 
             return res;
 
         }
 
-        static public string From10To2(int value, int len)
+        static public string To2(long value, int len = 8)
         {
             string res = String.Empty;
 
-            List<int> array = new List<int>();
+            List<long> array = new List<long>();
 
             while (value > 0)
             {
@@ -146,5 +146,24 @@ namespace NumberSystem
             return res;
         }
 
+    }
+
+    class BinarySystem
+    {
+
+        static public string XOR(string number1, string number2)
+        {
+            string res = String.Empty;
+
+            for (int i = 0; i < 32; i++)
+            {
+                if (number1[i] == number2[i])
+                    res += "0";
+                else
+                    res += "1";
+            }
+
+            return res;
+        }
     }
 }
