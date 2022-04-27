@@ -78,18 +78,16 @@ namespace FeistelNetwork
 
             }
 
-            text.Replace(' ', '_');
-
             text_bytes = new string[text.Length];
             key_bytes = new string[key_len];
 
             for (int i = 0; i < key_len; i++)
             {
-                key_bytes[i] = ConvertSystem.To16( ConvertSystem.CharToCode(key[i]));
+                key_bytes[i] = ConvertSystem.To16(key[i]);
             }
 
             for (int i = 0; i < text.Length; i++)
-                text_bytes[i] = ConvertSystem.To16(ConvertSystem.CharToCode(text[i]));
+                text_bytes[i] = ConvertSystem.To16(text[i]);
 
             swap_table = new string[8, 16];
             int l = 0, j = 0;

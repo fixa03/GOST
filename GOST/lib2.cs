@@ -5,43 +5,6 @@ namespace NumberSystem
 {
     class ConvertSystem
     {
-        //const string alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя,.?!_";
-
-        static char[,] alphabet = {
-            { 'а','б','в','г','д','е',' ' },
-            { 'ж','з','и','й','к','л','-' },
-            { 'м','н','о','п','р','с','.' },
-            { 'т','у','ф','х','ц','ч',',' },
-            { 'ш','щ','ы','э','ю','я','ь' }
-        };
-
-        static public int CharToCode(char c)
-        {
-
-            for (int i = 0; i < 6; i++)
-                for (int j = 0; j < 7; j++)
-                    if (alphabet[i, j] == c) return i * 10 + j;
-
-            return -1;
-        }
-
-        static public char CodeToChar(long n)
-        {
-            int i = 0;
-            int j = 0;
-
-            int a = (int)n;
-
-            while (n / 10 > 0)
-            {
-                i = (int) n / 10;
-                j = (int) n % 10;
-
-                n /= 10;
-            }
-
-            return alphabet[i, j];
-        }
 
         static public string From16ToStr(ref string[] text)
         {
@@ -54,9 +17,9 @@ namespace NumberSystem
             
             for (int i = 0; i < temp.Length; i += 4)
             {
-                long a = ConvertSystem.From16To10(temp.Substring(i, 4));
+                int a = 0;
                 //bool flag = Int32.TryParse(res.Substring(i, 4), out a);
-                res +=  CodeToChar(ConvertSystem.From16To10(temp.Substring(i, 4))) ;
+                res += (char)ConvertSystem.From16To10(temp.Substring(i, 4));
                 //Console.Write(Char. + " ");
             }
 
@@ -76,7 +39,7 @@ namespace NumberSystem
             }
 
             if (len > array.Count)
-                for (int i = array.Count; i < len; i++)
+                for (int i = 0; i <= (len - array.Count); i++)
                     array.Add(0);
 
             array.Reverse();
