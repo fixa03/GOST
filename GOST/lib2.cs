@@ -5,6 +5,27 @@ namespace NumberSystem
 {
     class ConvertSystem
     {
+
+        static public string From16ToStr(ref string[] text)
+        {
+
+            string res = String.Empty;
+            string temp = String.Empty;
+
+            foreach (string s in text)
+                temp += s;
+            
+            for (int i = 0; i < temp.Length; i += 4)
+            {
+                int a = 0;
+                //bool flag = Int32.TryParse(res.Substring(i, 4), out a);
+                res += (char)ConvertSystem.From16To10(temp.Substring(i, 4));
+                //Console.Write(Char. + " ");
+            }
+
+            return res;
+        }
+
         static public string To16(long value, int len = 4)
         {
             string res = String.Empty;
@@ -18,7 +39,7 @@ namespace NumberSystem
             }
 
             if (len > array.Count)
-                for (int i = 0; i < (len - array.Count); i++)
+                for (int i = 0; i <= (len - array.Count); i++)
                     array.Add(0);
 
             array.Reverse();

@@ -1,6 +1,6 @@
 ﻿using System;
-using Feistel_network;
-using NumberSystem;
+using FeistelNetwork;
+
 
 namespace GOST
 {
@@ -8,22 +8,30 @@ namespace GOST
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            Console.WriteLine(Console.OutputEncoding);
 
             //длина текста кратна 4 
             //длина ключа = 16 символов
 
-            gost obj = new gost("кмзи", "оченьхорошийключ");
-            //string str2 = obj.Addition16("144E","4B7");
 
-            //obj.encrypt();
-            obj.decrypt();
+            while (true)
+            {
+                gost obj = new gost();
+                Console.Write("Зашифровать(space) или расшировать(any key) > ");
+                ConsoleKeyInfo choice = Console.ReadKey();
 
-            string str = Console.ReadLine();
-            str = str.ToLower();
-
-            int[] array_byte = new int[str.Length];
-            for (int i = 0; i < array_byte.Length; i++)
-                array_byte[i] = str[i];
+                if (choice.Key == ConsoleKey.Spacebar)
+                {
+                    obj.encrypt();
+                    Console.WriteLine("Зашифровано!");
+                }
+                else 
+                {
+                    obj.decrypt();
+                    Console.WriteLine("Расшифровано!");
+                }
+            }
 
         }
     }
